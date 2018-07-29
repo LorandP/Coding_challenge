@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { User } from '../entity/User';
 import { BlogPostService } from '../services/BlogPostService';
 
-export interface Props { }
+export interface Props {
+    navigation: any;
+}
 export interface State { }
 
 export default class ListOfBlogPosts extends React.Component<Props, State> {
@@ -16,13 +18,15 @@ export default class ListOfBlogPosts extends React.Component<Props, State> {
         this.blogPostService = new BlogPostService();
     }
 
+    //TODO: Add loading spinner
     async componentDidMount() {
         let userID = 0;
+        
         try {
-            userID = this.user.getId();
-            await this.blogPostService.retrieveListOfPosts(userID);
+            userID = this.props.navigation.state.params.userID;
+            let arrayOfBlogPosts = await this.blogPostService.retrieveListOfPosts(userID);
         } catch (error) {
-            console.log('User has not been found');
+            console.log('List of blog post -- ', error);
         }
     }
 
