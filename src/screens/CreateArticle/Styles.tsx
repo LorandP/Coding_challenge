@@ -1,22 +1,26 @@
 
 import * as React from 'react'
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { GREEN_LIGHT, WHITE } from '../../config/colors';
 
-export interface Props { }
-export interface State { }
+
+export interface Props {
+    onChangeTitle: Function;
+    onChangeContent: Function;
+    onSaveArticle: Function;
+}
+export interface State {
+
+}
 
 export default class Styles extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {}
-    }
 
     render() {
         return (
             <View style={styles.parentContainer}>
                 <KeyboardAvoidingView
-                behavior='padding'
-                contentContainerStyle={{ flex: 1 }}
+                    behavior='padding'
+                    contentContainerStyle={{ flex: 1 }}
                 >
                     <View
                         style={{ marginTop: 20 }}
@@ -25,6 +29,7 @@ export default class Styles extends React.Component<Props, State> {
                             style={styles.lable}
                         >{'Add title: '}</Text>
                         <TextInput
+                            onChangeText={(title) => this.props.onChangeTitle(title)}
                             style={styles.titleInput}
                             placeholder={'My favorite story ... '}
                         />
@@ -36,11 +41,20 @@ export default class Styles extends React.Component<Props, State> {
                             style={styles.lable}
                         >{'Add content: '}</Text>
                         <TextInput
+                            onChangeText={(content) => this.props.onChangeContent(content)}
                             style={styles.contentInput}
                             placeholder={'Once upon a time ... '}
                         />
                     </View>
                 </KeyboardAvoidingView>
+                <TouchableOpacity
+                    style={styles.showPostsButton}
+                    onPress={() => this.props.onSaveArticle()}
+                >
+                    <Text
+                        style={styles.text}
+                    >{'Save article'}</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -50,7 +64,8 @@ const styles = StyleSheet.create({
     parentContainer: {
         flex: 1,
         padding: 30,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
     lable: {
         fontWeight: 'bold',
@@ -64,5 +79,18 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontSize: 20,
         borderRadius: 10,
+    },
+    showPostsButton: {
+        backgroundColor: GREEN_LIGHT,
+        height: 50,
+        width: 150,
+        borderRadius: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+    text: {
+        color: WHITE,
+        fontSize: 18
     }
 });

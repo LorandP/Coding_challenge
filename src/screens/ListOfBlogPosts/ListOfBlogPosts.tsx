@@ -12,13 +12,13 @@ export interface State {
 }
 
 export default class ListOfBlogPosts extends React.Component<Props, State> {
-    private user: User;
+    private userID: number;
     private blogPostService: BlogPostService;
     private listOfBlogPosts: Array<BlogPost>;
 
     constructor(props: Props) {
         super(props);
-        this.user = new User();
+        this.userID = 0;
         this.blogPostService = new BlogPostService();
         this.listOfBlogPosts = new Array<BlogPost>();
         this.state = {
@@ -27,11 +27,9 @@ export default class ListOfBlogPosts extends React.Component<Props, State> {
     }
 
     async componentDidMount() {
-        let userID = 0;
-        
         try {
-            userID = this.props.navigation.state.params.userID;
-            this.listOfBlogPosts = await this.blogPostService.retrieveListOfPosts(userID);
+            this.userID = this.props.navigation.state.params.userID;
+            this.listOfBlogPosts = await this.blogPostService.retrieveListOfPosts(this.userID);
             this.setState({...this.state, loading: false})
         } catch (error) {
             console.log('List of blog post -- ', error);
@@ -57,7 +55,7 @@ export default class ListOfBlogPosts extends React.Component<Props, State> {
      * @memberof ListOfBlogPosts
      */
     private navigateToCreateArticle() {
-        this.props.navigation.navigate('CreateArticle');
+        this.props.navigation.navigate('CreateArticle', {userId: this.userID});
     }
 
     render() {
