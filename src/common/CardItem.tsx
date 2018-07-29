@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { GREEN_LIGHT } from '../config/colors';
+
+const CARD_IMAGE = require('../../assets/blog_card_image.jpg');
 
 export interface Props {
     style: any;
@@ -21,15 +23,17 @@ export default class CardItem extends React.Component<Props, State> {
                 style={this.props.style}
                 onPress={() => this.props.onCardPressed()}
             >
+
                 <View
-                    style={styles.topView}
+                style={styles.topView}
                 />
+
                 <View
                     style={styles.bottomView}
                 >
-                <Text
-                style={styles.title}
-                >{this.props.title}</Text>
+                    <Text
+                        style={styles.title}
+                    >{this.props.title}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -38,7 +42,9 @@ export default class CardItem extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     topView: {
-        flex: 1,
+        height: 100,
+        flex: 0.5,
+        width: null,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         backgroundColor: GREEN_LIGHT
@@ -53,5 +59,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'left'
+    },
+    image: {
+        height: 100,
+        flex: 0.5,
+        width: null,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     }
 });

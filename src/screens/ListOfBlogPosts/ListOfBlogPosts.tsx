@@ -49,12 +49,24 @@ export default class ListOfBlogPosts extends React.Component<Props, State> {
         this.props.navigation.navigate('Article', {blogPost})
     }
 
+
+    /**
+     * Navigates to the create article page
+     *
+     * @private
+     * @memberof ListOfBlogPosts
+     */
+    private navigateToCreateArticle() {
+        this.props.navigation.navigate('CreateArticle');
+    }
+
     render() {
         return (
             <Styles
             listOfBlogPosts={this.listOfBlogPosts}
             loading={this.state.loading}
             onCardPressed={(blogPost) => this.navigateToBlogPost(blogPost)}
+            onShowCreatePostButtonPressed={() => this.navigateToCreateArticle()}
             />
         );
     }

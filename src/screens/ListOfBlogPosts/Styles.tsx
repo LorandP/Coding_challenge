@@ -1,23 +1,21 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { BlogPost } from '../../entity/BlogPost';
 import CardItem from '../../common/CardItem';
-import { WHITE, GRAY, GREEN } from '../../config/colors';
+import { WHITE, GRAY, GREEN, GREEN_LIGHT } from '../../config/colors';
 
 export interface Props {
     listOfBlogPosts: Array<BlogPost>
     loading: boolean;
     onCardPressed: Function;
+    onShowCreatePostButtonPressed: Function;
 }
 export interface State { }
 
 export default class Styles extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = {}
     }
-
-    
 
     /**
      * Returns a blog post card that will be renderd on each row of the flatlist
@@ -62,6 +60,17 @@ export default class Styles extends React.Component<Props, State> {
                         renderItem={(listRenderItem) => this.renderItem(listRenderItem.item)}
                     />
                 }
+                {
+                    !this.props.loading &&
+                    <TouchableOpacity
+                        style={styles.showPostsButton}
+                        onPress={() => this.props.onShowCreatePostButtonPressed()}
+                    >
+                        <Text
+                            style={styles.text}
+                        >{'Create an article'}</Text>
+                    </TouchableOpacity>
+                }
             </View>
         );
     }
@@ -71,7 +80,7 @@ const styles = StyleSheet.create({
     cardItemContainer: {
         borderRadius: 10,
         backgroundColor: WHITE,
-        height: 250,
+        height: 150,
         width: null,
         flex: 1,
         margin: 10,
@@ -83,5 +92,28 @@ const styles = StyleSheet.create({
         },
         shadowRadius: 4,
         shadowOpacity: 3
+    },
+    showPostsButton: {
+        backgroundColor: GREEN_LIGHT,
+        height: 60,
+        width: 160,
+        borderRadius: 40,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        bottom: 10,
+        elevation: 5,
+        shadowColor: GRAY,
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 2,
+        shadowOpacity: 3
+    },
+    text: {
+        color: WHITE,
+        fontSize: 18
     }
 });

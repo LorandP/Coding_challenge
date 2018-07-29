@@ -28,11 +28,6 @@ export default class Article extends React.Component<Props, State> {
         }
     }
     
-    /**
-     *Creates an instance of Article.
-     * @param {Props} props
-     * @memberof Article
-     */
     constructor(props: Props) {
         super(props);
         this.blogPost = new BlogPost();
