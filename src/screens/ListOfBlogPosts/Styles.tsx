@@ -51,7 +51,6 @@ export default class Styles extends React.Component<Props, State> {
                             color={GREEN}
                         />
                     </View>
-
                 }
                 {
                     !this.props.loading &&
