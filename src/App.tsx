@@ -1,11 +1,7 @@
 import * as React from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Welcome } from '../src/screens/Welcome';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your to reload,\n'
-});
 
 export interface Props { }
 export interface State { }
@@ -14,15 +10,7 @@ export class App extends React.Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Welcome/>
       </View>
     );
   }
