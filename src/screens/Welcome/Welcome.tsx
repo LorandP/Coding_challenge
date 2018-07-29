@@ -26,7 +26,7 @@ export default class Welcome extends React.Component<Props, State> {
      * @memberof Welcome
      */
     private navigateToListOfBlogPosts() {
-       this.props.navigation.navigate('ListOfBlogPosts') ;
+       this.props.navigation.navigate('ListOfBlogPosts', {userID: this.user.getId()}) ;
     }
 
     /**
