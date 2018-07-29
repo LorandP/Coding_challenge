@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import { Welcome } from '../screens/Welcome';
+import { Welcome } from '../screens/Welcome/Welcome';
 import { GRAY, GREEN } from './colors';
 
 const headerStyle = {

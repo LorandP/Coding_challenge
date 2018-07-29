@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Welcome } from '../src/screens/Welcome';
+import { Welcome } from './screens/Welcome/Welcome';
 
 
 export interface Props { }

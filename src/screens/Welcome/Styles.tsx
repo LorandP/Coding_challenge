@@ -1,35 +1,22 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { User } from '../entity/User';
-import { GREEN_LIGHT, WHITE, GREEN } from '../config/colors';
-export interface Props {}
+import { GREEN_LIGHT, WHITE, GREEN } from '../../config/colors';
+
+export interface Props {
+    name: string;
+    city: string;
+    street: string;
+}
 export interface State {}
 
-export class Welcome extends React.Component<Props, State> {
-    private user: User;
+export class Styles extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.user = new User();
-        this.state = {}
-    }
-
-    componentDidMount() {
-        this.setUserDetails();
-    }
-
-    /**
-     * Sets the details of the user
-     */
-    private setUserDetails() {
-        this.user.setId(1);
-        this.user.setName('Leanne Graham');
-        this.user.setCity('Gwenborough');
-        this.user.setStreet('Kulas Light');
     }
 
     render() {
-        const greetingMessage = 'Hello ' + this.user.getName() + '. Welcome back!' + '\n' +
-                                'Are you still living in ' + this.user.getCity() + ', ' + this.user.getStreet() + ' ?';
+        const greetingMessage = 'Hello ' + this.props.name + '. Welcome back!' + '\n' +
+                                'Are you still living in ' + this.props.city + ', ' + this.props.street + ' ?';
         return (
             <View style={styles.container}>
                 <Text
