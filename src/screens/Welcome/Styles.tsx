@@ -6,10 +6,11 @@ export interface Props {
     name: string;
     city: string;
     street: string;
+    onShowPostsButtonPressed?: Function;
 }
 export interface State {}
 
-export class Styles extends React.Component<Props, State> {
+export default class Styles extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
     }
@@ -24,6 +25,7 @@ export class Styles extends React.Component<Props, State> {
                 >{greetingMessage}</Text>
                 <TouchableOpacity
                 style={styles.showPostsButton}
+                onPress={() => this.props.onShowPostsButtonPressed()}
                 >
                     <Text
                     style={styles.text}

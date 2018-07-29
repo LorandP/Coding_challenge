@@ -1,28 +1,48 @@
-import { StackNavigator } from 'react-navigation';
-import { Welcome } from '../screens/Welcome/Welcome';
-import { GRAY, GREEN } from './colors';
+import { createStackNavigator } from 'react-navigation';
+import Welcome from '../screens/Welcome/Welcome';
+import ListOfBlogPosts from '../screens/ListOfBlogPosts';
+import { GRAY, GREEN, WHITE } from './colors';
 
 const headerStyle = {
     shadowColor: GRAY,
     shadowOffset: {
-      width: 0,
-      height: 3
+        width: 0,
+        height: 3
     },
     shadowRadius: 2,
     shadowOpacity: 0.5,
     borderBottomColor: 'transparent'
 };
 
-const homeStackNavigator = StackNavigator ({
+
+
+const homeStackNavigator = createStackNavigator({
     Welcome: {
-        screens: Welcome
-    }},
+        screen: Welcome,
+        navigationOptions: () => ({
+            title: 'Welcome',
+            headerTintColor: GREEN,
+            headerBackTitle: null,
+            headerStyle
+        })
+    },
+    ListOfBlogPosts: {
+        screen: ListOfBlogPosts,
+        navigationOptions: () => ({
+            title: 'Blog posts',
+            headerBackTitle: null,
+            headerTintColor: GREEN,
+            headerStyle
+        })
+    }
+},
     {
         headerMode: 'float',
-        headerTintColor: GREEN,
         cardStyle: {
-            backgroundColor: 'white'
+            backgroundColor: WHITE
         },
         headerStyle
     }
 )
+
+export { homeStackNavigator as HomeStackNavigator }

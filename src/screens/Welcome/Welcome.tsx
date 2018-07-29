@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { User } from '../../entity/User';
-import { Styles } from './Styles';
-export interface Props {}
+import Styles from './Styles';
+export interface Props {
+    navigation: any;
+}
 export interface State {}
 
-export class Welcome extends React.Component<Props, State> {
+export default class Welcome extends React.Component<Props, State> {
     private user: User;
     constructor(props: Props) {
         super(props);
@@ -14,6 +16,17 @@ export class Welcome extends React.Component<Props, State> {
 
     componentDidMount() {
         this.setUserDetails();
+    }
+
+
+    /**
+     * Navigates to the list of blog posts screen
+     *
+     * @private
+     * @memberof Welcome
+     */
+    private navigateToListOfBlogPosts() {
+       this.props.navigation.navigate('ListOfBlogPosts') ;
     }
 
     /**
@@ -32,6 +45,7 @@ export class Welcome extends React.Component<Props, State> {
             name={this.user.getName()}
             city={this.user.getCity()}
             street={this.user.getStreet()}
+            onShowPostsButtonPressed={() => this.navigateToListOfBlogPosts()}
             />
         );
     }
