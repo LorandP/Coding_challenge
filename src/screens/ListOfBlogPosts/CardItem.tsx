@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { GREEN_LIGHT } from '../config/colors';
-
-const CARD_IMAGE = require('../../assets/blog_card_image.jpg');
+import { GREEN_LIGHT } from '../../config/colors';
 
 export interface Props {
     style: any;
@@ -23,7 +21,6 @@ export default class CardItem extends React.Component<Props, State> {
                 style={this.props.style}
                 onPress={() => this.props.onCardPressed()}
             >
-
                 <View
                 style={styles.topView}
                 />
@@ -58,7 +55,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-        textAlign: 'left'
+        textAlign: 'center'
     },
     image: {
         height: 100,

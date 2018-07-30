@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { BlogPost } from '../../entity/BlogPost';
+import BlogPost from '../../entity/BlogPost';
 import { GREEN } from '../../config/colors';
 
 export interface Props {

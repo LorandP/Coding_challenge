@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { BlogPost } from '../../entity/BlogPost';
-import CardItem from '../../common/CardItem';
+import BlogPost from '../../entity/BlogPost';
+import CardItem from './CardItem';
+import ErrorText from '../../common/ErrorText';
 import { WHITE, GRAY, GREEN, CYAN, SHADOW_COLOR } from '../../config/colors';
 
 export interface Props {
@@ -9,6 +10,7 @@ export interface Props {
     loading: boolean;
     onCardPressed: Function;
     onShowCreatePostButtonPressed: Function;
+    errorMessage: string;
 }
 export interface State { }
 
@@ -53,6 +55,7 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.loading &&
                     <FlatList
+                    style={{flex: 1}}
                         data={this.props.listOfBlogPosts}
                         scrollEnabled={true}
                         windowSize={3}
@@ -62,16 +65,28 @@ export default class Styles extends React.Component<Props, State> {
                 }
                 {
                     !this.props.loading &&
-                    <TouchableOpacity
-                        style={styles.showPostsButton}
-                        onPress={() => this.props.onShowCreatePostButtonPressed()}
+                    <View
+                    style={styles.buttonContainer}
                     >
-                        <Text
-                            style={styles.text}
-                        >{'Create an article'}</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.showPostsButton}
+                            onPress={() => this.props.onShowCreatePostButtonPressed()}
+                        >
+                            <Text
+                                style={styles.text}
+                            >{'Create An Article'}</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 }
-                
+                {
+                    !this.props.loading &&
+                    this.props.errorMessage !== '' &&
+                    <ErrorText
+                        errorMessage={this.props.errorMessage}
+                    />
+                }
+
             </View>
         );
     }
@@ -99,7 +114,6 @@ const styles = StyleSheet.create({
         height: 60,
         width: 160,
         borderRadius: 40,
-        position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
@@ -116,5 +130,15 @@ const styles = StyleSheet.create({
     text: {
         color: WHITE,
         fontSize: 18
+    },
+    buttonContainer: {
+        paddingTop: 15,
+        elevation: 35,
+        backgroundColor: WHITE,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: SHADOW_COLOR,
+        shadowRadius: 6,
+        shadowOpacity: 2
     }
 });

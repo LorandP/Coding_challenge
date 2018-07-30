@@ -2,12 +2,13 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native';
 import Styles from './Styles';
-import Article from '../../entity/Article';
+import BlogPost from '../../entity/BlogPost';
+import BlogPostService from '../../services/BlogPostService';
 
-export interface Props { 
+export interface Props {
     navigation: any;
 }
-export interface State { 
+export interface State {
     title: string;
     content: string;
     errorMessage: string;
@@ -15,11 +16,15 @@ export interface State {
 
 export default class CreateArticle extends React.Component<Props, State> {
     private userId: number;
-    private article: Article;
+    private blogPost: BlogPost;
+    private blogPostService: BlogPostService;
+    private existingListOfArticles: Array<BlogPost>;
 
     constructor(props: Props) {
         super(props);
-        this.article = new Article();
+        this.blogPost = new BlogPost();
+        this.blogPostService = new BlogPostService();
+        this.existingListOfArticles = new Array<BlogPost>();
         this.state = {
             title: '',
             content: '',
@@ -29,9 +34,10 @@ export default class CreateArticle extends React.Component<Props, State> {
 
     componentDidMount() {
         this.userId = this.props.navigation.state.params.userId;
+        this.existingListOfArticles = this.props.navigation.state.params.listOfArticles;
     }
 
-    
+
     /**
      * Verifies if all fields have been filled out.
      * Creats an article and sends it to the backend.
@@ -39,8 +45,7 @@ export default class CreateArticle extends React.Component<Props, State> {
      * @private
      * @memberof CreateArticle
      */
-    private saveArticle = () => {
-        console.log('save article ----- ', this.state.title);
+    private saveArticle = async () => {
         if (!this.state.title) {
             this.setState({
                 ...this.state,
@@ -52,13 +57,33 @@ export default class CreateArticle extends React.Component<Props, State> {
                 errorMessage: 'Content cannot be empty. Please add some content'
             });
         } else {
-            this.article.setTite(this.state.title);
-            this.article.setContent(this.state.content);
-            this.article.setUserId(this.userId);
+            this.blogPost.setTitle(this.state.title);
+            this.blogPost.setBody(this.state.content);
+            this.blogPost.setUserId(this.userId);
+            this.postBlogPost();
         }
     }
 
-        /**
+
+    /**
+     * Posts the newly created article to the backend and saves it to the already existing list of articles.
+     * If succesfull, nvigates to the list of blog posts screen.
+     *
+     * @private
+     * @memberof CreateArticle
+     */
+    private async postBlogPost() {
+        try {
+            let newListOfBlogPosts = await this.blogPostService.postBlogPost(this.existingListOfArticles, this.blogPost);
+            this.props.navigation.navigate('ListOfBlogPosts', { newListOfBlogPosts });
+        } catch (error) {
+            this.setState({
+                errorMessage: 'Could not uploade your article. Please try again later'
+            });
+        }
+    }
+
+    /**
      * Changes the state of the title with the one set by the user
      *
      * @private
@@ -104,11 +129,11 @@ export default class CreateArticle extends React.Component<Props, State> {
     render() {
         return (
             <Styles
-            onChangeTitle={(title) => this.changeTitle(title)}
-            onChangeContent={(content) => this.changeContent(content)}
-            onSaveArticle={() => this.saveArticle()}
-            errorMessage={this.state.errorMessage}
-            onTextFieldFocused={() => this.textFieldFocused()}
+                onChangeTitle={(title) => this.changeTitle(title)}
+                onChangeContent={(content) => this.changeContent(content)}
+                onSaveArticle={() => this.saveArticle()}
+                errorMessage={this.state.errorMessage}
+                onTextFieldFocused={() => this.textFieldFocused()}
             />
         );
     }

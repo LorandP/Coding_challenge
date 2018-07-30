@@ -1,7 +1,8 @@
 
 import * as React from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
-import { GREEN_LIGHT, WHITE, ERROR } from '../../config/colors';
+import { GREEN_LIGHT, WHITE } from '../../config/colors';
+import ErrorText from '../../common/ErrorText';
 
 
 export interface Props {
@@ -63,9 +64,9 @@ export default class Styles extends React.Component<Props, State> {
                 }
                 {
                     this.props.errorMessage !== '' &&
-                    <Text
-                        style={styles.errorMessage}
-                    >{this.props.errorMessage}</Text>
+                    <ErrorText
+                    errorMessage={this.props.errorMessage}
+                    />
                 }
 
             </View>
@@ -105,11 +106,5 @@ const styles = StyleSheet.create({
     text: {
         color: WHITE,
         fontSize: 18
-    },
-    errorMessage: {
-        color: ERROR,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center'
     }
 });
