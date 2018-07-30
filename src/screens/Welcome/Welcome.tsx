@@ -1,23 +1,31 @@
 import * as React from 'react'
 import { User } from '../../entity/User';
 import Styles from './Styles';
+import UserService from '../../services/UserService';
 export interface Props {
     navigation: any;
 }
-export interface State {}
+export interface State {
+    userNotFound: boolean;
+    loading: boolean;
+}
 
 export default class Welcome extends React.Component<Props, State> {
     private user: User;
+    private userService: UserService;
     constructor(props: Props) {
         super(props);
         this.user = new User();
-        this.state = {}
+        this.userService = new UserService();
+        this.state = {
+            userNotFound: false,
+            loading: true
+        };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setUserDetails();
     }
-
 
     /**
      * Navigates to the list of blog posts screen
@@ -32,11 +40,21 @@ export default class Welcome extends React.Component<Props, State> {
     /**
      * Sets the details of the user
      */
-    private setUserDetails() {
-        this.user.setId(1);
-        this.user.setName('Leanne Graham');
-        this.user.setCity('Gwenborough');
-        this.user.setStreet('Kulas Light');
+    private async setUserDetails() {
+        const userID: string = '1';
+        try {
+            this.user = await this.userService.userDetails(userID);
+            this.setState({
+                ...this.state,
+                loading: false
+            });
+        } catch (error) {
+            this.setState({
+                ...this.state,
+                userNotFound: true,
+                loading: false
+            });
+        }
     }
 
     render() {
@@ -46,6 +64,8 @@ export default class Welcome extends React.Component<Props, State> {
             city={this.user.getCity()}
             street={this.user.getStreet()}
             onShowPostsButtonPressed={() => this.navigateToListOfBlogPosts()}
+            userNotFound={this.state.userNotFound}
+            loading={this.state.loading}
             />
         );
     }

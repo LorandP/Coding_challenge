@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { BlogPost } from '../../entity/BlogPost';
+import BlogPost from '../../entity/BlogPost';
 import { GREEN } from '../../config/colors';
 
 export interface Props {
@@ -28,11 +28,6 @@ export default class Article extends React.Component<Props, State> {
         }
     }
     
-    /**
-     *Creates an instance of Article.
-     * @param {Props} props
-     * @memberof Article
-     */
     constructor(props: Props) {
         super(props);
         this.blogPost = new BlogPost();

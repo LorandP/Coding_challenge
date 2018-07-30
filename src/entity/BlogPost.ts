@@ -1,4 +1,5 @@
-export class BlogPost {
+export default class BlogPost {
+    private userId: number;
     private id: number;
     private title: string;
     private body: string;
@@ -25,5 +26,13 @@ export class BlogPost {
 
     public getBody() {
         return this.body;
+    }
+
+    public setUserId(userId: number) {
+        this.userId = userId;
+    }
+    
+    public getUserId(): number {
+        return this.userId;
     }
 }

@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 import Welcome from '../screens/Welcome/Welcome';
 import ListOfBlogPosts from '../screens/ListOfBlogPosts/ListOfBlogPosts';
 import Article from '../screens/Article/Article';
+import CreateArticle from '../screens/CreateArticle/CreateArticle';
 import { GRAY, GREEN, WHITE } from './colors';
 
 const headerStyle = {
@@ -30,7 +31,7 @@ const homeStackNavigator = createStackNavigator({
     ListOfBlogPosts: {
         screen: ListOfBlogPosts,
         navigationOptions: () => ({
-            title: 'Blog posts',
+            title: 'Articles',
             headerBackTitle: null,
             headerTintColor: GREEN,
             headerStyle
@@ -38,6 +39,15 @@ const homeStackNavigator = createStackNavigator({
     },
     Article: {
         screen: Article
+    },
+    CreateArticle: {
+        screen: CreateArticle,
+        navigationOptions: () => ({
+            title: 'Create Article',
+            headerBackTitle: null,
+            headerTintColor: GREEN,
+            headerStyle
+        })
     }
 },
     {
