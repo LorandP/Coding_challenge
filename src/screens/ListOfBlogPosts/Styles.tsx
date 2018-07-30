@@ -2,7 +2,7 @@ import * as React from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { BlogPost } from '../../entity/BlogPost';
 import CardItem from '../../common/CardItem';
-import { WHITE, GRAY, GREEN, GREEN_LIGHT } from '../../config/colors';
+import { WHITE, GRAY, GREEN, CYAN, SHADOW_COLOR } from '../../config/colors';
 
 export interface Props {
     listOfBlogPosts: Array<BlogPost>
@@ -71,6 +71,7 @@ export default class Styles extends React.Component<Props, State> {
                         >{'Create an article'}</Text>
                     </TouchableOpacity>
                 }
+                
             </View>
         );
     }
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 3
     },
     showPostsButton: {
-        backgroundColor: GREEN_LIGHT,
+        backgroundColor: CYAN,
         height: 60,
         width: 160,
         borderRadius: 40,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         bottom: 10,
         elevation: 5,
-        shadowColor: GRAY,
+        shadowColor: SHADOW_COLOR,
         shadowOffset: {
             width: 0,
             height: 4

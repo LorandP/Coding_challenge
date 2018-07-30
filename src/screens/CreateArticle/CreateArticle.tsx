@@ -49,7 +49,7 @@ export default class CreateArticle extends React.Component<Props, State> {
         } else if (!this.state.content) {
             this.setState({
                 ...this.state,
-                errorMessage: 'Contetn cannot be empty. Please add some content'
+                errorMessage: 'Content cannot be empty. Please add some content'
             });
         } else {
             this.article.setTite(this.state.title);
@@ -85,12 +85,30 @@ export default class CreateArticle extends React.Component<Props, State> {
         })
     }
 
+
+    /**
+     * Clears the error message from state
+     *
+     * @private
+     * @memberof CreateArticle
+     */
+    private textFieldFocused = () => {
+        if (this.state.errorMessage) {
+            this.setState({
+                ...this.state,
+                errorMessage: ''
+            });
+        }
+    }
+
     render() {
         return (
             <Styles
             onChangeTitle={(title) => this.changeTitle(title)}
             onChangeContent={(content) => this.changeContent(content)}
             onSaveArticle={() => this.saveArticle()}
+            errorMessage={this.state.errorMessage}
+            onTextFieldFocused={() => this.textFieldFocused()}
             />
         );
     }

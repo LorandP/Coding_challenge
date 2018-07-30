@@ -1,20 +1,21 @@
 
 import * as React from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
-import { GREEN_LIGHT, WHITE } from '../../config/colors';
+import { GREEN_LIGHT, WHITE, ERROR } from '../../config/colors';
 
 
 export interface Props {
     onChangeTitle: Function;
     onChangeContent: Function;
     onSaveArticle: Function;
+    onTextFieldFocused: Function;
+    errorMessage: string;
 }
 export interface State {
 
 }
 
 export default class Styles extends React.Component<Props, State> {
-
     render() {
         return (
             <View style={styles.parentContainer}>
@@ -31,6 +32,7 @@ export default class Styles extends React.Component<Props, State> {
                         <TextInput
                             onChangeText={(title) => this.props.onChangeTitle(title)}
                             style={styles.titleInput}
+                            onFocus={() => this.props.onTextFieldFocused()}
                             placeholder={'My favorite story ... '}
                         />
                     </View>
@@ -43,18 +45,29 @@ export default class Styles extends React.Component<Props, State> {
                         <TextInput
                             onChangeText={(content) => this.props.onChangeContent(content)}
                             style={styles.contentInput}
+                            onFocus={() => this.props.onTextFieldFocused()}
                             placeholder={'Once upon a time ... '}
                         />
                     </View>
                 </KeyboardAvoidingView>
-                <TouchableOpacity
-                    style={styles.showPostsButton}
-                    onPress={() => this.props.onSaveArticle()}
-                >
+                {
+                    !this.props.errorMessage &&
+                    <TouchableOpacity
+                        style={styles.showPostsButton}
+                        onPress={() => this.props.onSaveArticle()}
+                    >
+                        <Text
+                            style={styles.text}
+                        >{'Save article'}</Text>
+                    </TouchableOpacity>
+                }
+                {
+                    this.props.errorMessage !== '' &&
                     <Text
-                        style={styles.text}
-                    >{'Save article'}</Text>
-                </TouchableOpacity>
+                        style={styles.errorMessage}
+                    >{this.props.errorMessage}</Text>
+                }
+
             </View>
         );
     }
@@ -92,5 +105,11 @@ const styles = StyleSheet.create({
     text: {
         color: WHITE,
         fontSize: 18
+    },
+    errorMessage: {
+        color: ERROR,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 });
