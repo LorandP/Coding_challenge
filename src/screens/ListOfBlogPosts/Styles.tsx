@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity }
 import BlogPost from '../../entity/BlogPost';
 import CardItem from './CardItem';
 import ErrorText from '../../common/ErrorText';
+import ButtonGeneric from '../../common/ButtonGeneric';
 import { WHITE, GRAY, GREEN, CYAN, SHADOW_COLOR } from '../../config/colors';
 
 export interface Props {
@@ -55,7 +56,7 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.loading &&
                     <FlatList
-                    style={{flex: 1}}
+                        style={{ flex: 1 }}
                         data={this.props.listOfBlogPosts}
                         scrollEnabled={true}
                         windowSize={3}
@@ -66,16 +67,14 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.loading &&
                     <View
-                    style={styles.buttonContainer}
+                        style={styles.buttonContainer}
                     >
-                        <TouchableOpacity
-                            style={styles.showPostsButton}
-                            onPress={() => this.props.onShowCreatePostButtonPressed()}
-                        >
-                            <Text
-                                style={styles.text}
-                            >{'Create An Article'}</Text>
-                        </TouchableOpacity>
+                        <ButtonGeneric
+                            buttonStyle={styles.showPostsButton}
+                            textStyle={styles.text}
+                            buttonText={'Create An Article'}
+                            onButtonPressed={() => this.props.onShowCreatePostButtonPressed()}
+                        />
                     </View>
 
                 }

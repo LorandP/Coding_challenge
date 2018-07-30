@@ -1,8 +1,9 @@
 
 import * as React from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
-import { GREEN_LIGHT, WHITE } from '../../config/colors';
+import ButtonGeneric from '../../common/ButtonGeneric';
 import ErrorText from '../../common/ErrorText';
+import { GREEN_LIGHT, WHITE } from '../../config/colors';
 
 
 export interface Props {
@@ -53,19 +54,17 @@ export default class Styles extends React.Component<Props, State> {
                 </KeyboardAvoidingView>
                 {
                     !this.props.errorMessage &&
-                    <TouchableOpacity
-                        style={styles.showPostsButton}
-                        onPress={() => this.props.onSaveArticle()}
-                    >
-                        <Text
-                            style={styles.text}
-                        >{'Save article'}</Text>
-                    </TouchableOpacity>
+                    <ButtonGeneric
+                        buttonStyle={styles.showPostsButton}
+                        textStyle={styles.text}
+                        buttonText={'Save Article'}
+                        onButtonPressed={() => this.props.onSaveArticle()}
+                    />
                 }
                 {
                     this.props.errorMessage !== '' &&
                     <ErrorText
-                    errorMessage={this.props.errorMessage}
+                        errorMessage={this.props.errorMessage}
                     />
                 }
 

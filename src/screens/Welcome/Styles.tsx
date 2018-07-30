@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import ButtonGeneric from '../../common/ButtonGeneric';
 import { GREEN_LIGHT, WHITE, GREEN } from '../../config/colors';
 
 export interface Props {
@@ -40,14 +41,13 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <TouchableOpacity
-                        style={styles.showPostsButton}
-                        onPress={() => this.props.onShowPostsButtonPressed()}
-                    >
-                        <Text
-                            style={styles.text}
-                        >{'Show posts'}</Text>
-                    </TouchableOpacity>
+                    <ButtonGeneric
+                        buttonStyle={styles.showPostsButton}
+                        textStyle={styles.text}
+                        buttonText={'Show Articles'}
+                        onButtonPressed={() => this.props.onShowPostsButtonPressed()}
+                    />
+
                 }
                 {
                     this.props.userNotFound &&

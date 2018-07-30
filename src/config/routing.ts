@@ -31,7 +31,7 @@ const homeStackNavigator = createStackNavigator({
     ListOfBlogPosts: {
         screen: ListOfBlogPosts,
         navigationOptions: () => ({
-            title: 'Blog posts',
+            title: 'Articles',
             headerBackTitle: null,
             headerTintColor: GREEN,
             headerStyle
@@ -43,7 +43,7 @@ const homeStackNavigator = createStackNavigator({
     CreateArticle: {
         screen: CreateArticle,
         navigationOptions: () => ({
-            title: 'Create article',
+            title: 'Create Article',
             headerBackTitle: null,
             headerTintColor: GREEN,
             headerStyle
