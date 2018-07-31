@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     titleText: {
         color: GREEN,
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'Lato-Regular'
     }
 });
