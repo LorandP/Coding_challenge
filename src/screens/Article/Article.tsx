@@ -26,7 +26,7 @@ export default class Article extends React.Component<Props, State> {
             headerBackTitle: null,
             headerTintColor: GREEN,
             headerTitleStyle: {
-                fontFamily: 'Laton-Regular'
+                fontFamily: 'Lato-Regular'
             }
         }
     }
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        fontFamily: 'Laton-Bold',
+        fontFamily: 'Lato-Bold',
         textAlign: 'center',
         alignSelf: 'center',
         marginTop: 20

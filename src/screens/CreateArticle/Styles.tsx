@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
     },
     lable: {
         fontSize: 30,
-        fontFamily: 'Laton-Bold'
+        fontFamily: 'Lato-Bold'
     },
     titleInput: {
         marginTop: 10,
         fontSize: 20,
-        fontFamily: 'Laton-Regular'
+        fontFamily: 'Lato-Regular'
     },
     contentInput: {
         marginTop: 10,
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
     text: {
         color: WHITE,
         fontSize: 18,
-        fontFamily: 'Laton-Regular'
+        fontFamily: 'Lato-Regular'
     }
 });

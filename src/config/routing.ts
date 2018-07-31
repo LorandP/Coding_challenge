@@ -27,7 +27,7 @@ const homeStackNavigator = createStackNavigator({
             headerBackTitle: null,
             headerStyle,
             headerTitleStyle: {
-                fontFamily: 'Laton-Regular'
+                fontFamily: 'Lato-Regular'
             }
         })
     },
@@ -39,7 +39,7 @@ const homeStackNavigator = createStackNavigator({
             headerTintColor: GREEN,
             headerStyle,
             headerTitleStyle: {
-                fontFamily: 'Laton-Regular'
+                fontFamily: 'Lato-Regular'
             }
         })
     },
@@ -54,7 +54,7 @@ const homeStackNavigator = createStackNavigator({
             headerTintColor: GREEN,
             headerStyle,
             headerTitleStyle: {
-                fontFamily: 'Laton-Regular'
+                fontFamily: 'Lato-Regular'
             }
         })
     }
