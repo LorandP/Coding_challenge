@@ -23,7 +23,9 @@ export default class CardItem extends React.Component<Props, State> {
             >
                 <View
                 style={styles.topView}
-                />
+                >
+                
+                </View>
 
                 <View
                     style={styles.bottomView}
@@ -39,8 +41,8 @@ export default class CardItem extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     topView: {
-        height: 100,
-        flex: 0.5,
+        height: 200,
+        flex: 0.8,
         width: null,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
@@ -56,12 +58,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'
-    },
-    image: {
-        height: 100,
-        flex: 0.5,
-        width: null,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
     }
 });
