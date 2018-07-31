@@ -24,7 +24,10 @@ export default class Article extends React.Component<Props, State> {
         return {
             title: 'Blog ' + navigation.state.params.blogPost.getId(),
             headerBackTitle: null,
-            headerTintColor: GREEN
+            headerTintColor: GREEN,
+            headerTitleStyle: {
+                fontFamily: 'Laton-Regular'
+            }
         }
     }
     
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        fontWeight: 'bold',
+        fontFamily: 'Laton-Bold',
         textAlign: 'center',
         alignSelf: 'center',
         marginTop: 20

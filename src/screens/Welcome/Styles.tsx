@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: WHITE,
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Lato-Regular'
     },
     titleText: {
         color: GREEN,

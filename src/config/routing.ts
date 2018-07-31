@@ -25,7 +25,10 @@ const homeStackNavigator = createStackNavigator({
             title: 'Welcome',
             headerTintColor: GREEN,
             headerBackTitle: null,
-            headerStyle
+            headerStyle,
+            headerTitleStyle: {
+                fontFamily: 'Laton-Regular'
+            }
         })
     },
     ListOfBlogPosts: {
@@ -34,7 +37,10 @@ const homeStackNavigator = createStackNavigator({
             title: 'Articles',
             headerBackTitle: null,
             headerTintColor: GREEN,
-            headerStyle
+            headerStyle,
+            headerTitleStyle: {
+                fontFamily: 'Laton-Regular'
+            }
         })
     },
     Article: {
@@ -46,7 +52,10 @@ const homeStackNavigator = createStackNavigator({
             title: 'Create Article',
             headerBackTitle: null,
             headerTintColor: GREEN,
-            headerStyle
+            headerStyle,
+            headerTitleStyle: {
+                fontFamily: 'Laton-Regular'
+            }
         })
     }
 },

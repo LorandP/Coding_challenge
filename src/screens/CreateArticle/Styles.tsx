@@ -81,12 +81,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     lable: {
-        fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: 'Laton-Bold'
     },
     titleInput: {
         marginTop: 10,
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Laton-Regular'
     },
     contentInput: {
         marginTop: 10,
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: WHITE,
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Laton-Regular'
     }
 });
