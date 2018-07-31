@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
 import BlogPost from '../../entity/BlogPost';
-import { GREEN } from '../../config/colors';
+import Styles from './Styles';
 
 export interface Props {
     navigation: any;
@@ -50,37 +49,10 @@ export default class Article extends React.Component<Props, State> {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text
-                    style={styles.title}
-                >{this.state.title}</Text>
-                <Text
-                    style={styles.body}
-                >{this.state.body}</Text>
-            </View>
+            <Styles
+            title={this.state.title}
+            body={this.state.body}
+            />
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        padding: 20
-    },
-    title: {
-        fontSize: 25,
-        fontFamily: 'Lato-Bold',
-        textAlign: 'center',
-        alignSelf: 'center',
-        marginTop: 20
-    },
-    body: {
-        fontSize: 17,
-        textAlign: 'justify',
-        letterSpacing: 1,
-        marginTop: 50
-    }
-});
