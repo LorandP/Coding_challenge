@@ -23,7 +23,6 @@ const homeStackNavigator = createStackNavigator({
         screen: Welcome,
         navigationOptions: () => ({
             title: 'Welcome',
-            headerTintColor: GREEN,
             headerBackTitle: null,
             headerStyle,
             headerTitleStyle: {
@@ -36,7 +35,6 @@ const homeStackNavigator = createStackNavigator({
         navigationOptions: () => ({
             title: 'Articles',
             headerBackTitle: null,
-            headerTintColor: GREEN,
             headerStyle,
             headerTitleStyle: {
                 fontFamily: 'Lato-Regular'
@@ -51,7 +49,6 @@ const homeStackNavigator = createStackNavigator({
         navigationOptions: () => ({
             title: 'Create Article',
             headerBackTitle: null,
-            headerTintColor: GREEN,
             headerStyle,
             headerTitleStyle: {
                 fontFamily: 'Lato-Regular'

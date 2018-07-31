@@ -20,17 +20,16 @@ export default class Article extends React.Component<Props, State> {
      * @static
      * @memberof BlogPost
      */
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             title: 'Blog ' + navigation.state.params.blogPost.getId(),
             headerBackTitle: null,
-            headerTintColor: GREEN,
             headerTitleStyle: {
                 fontFamily: 'Lato-Regular'
             }
         }
     }
-    
+
     constructor(props: Props) {
         super(props);
         this.blogPost = new BlogPost();
@@ -52,12 +51,12 @@ export default class Article extends React.Component<Props, State> {
     render() {
         return (
             <View style={styles.container}>
-            <Text
-            style={styles.title}
-            >{this.state.title}</Text>
-            <Text
-            style={styles.body}
-            >{this.state.body}</Text>
+                <Text
+                    style={styles.title}
+                >{this.state.title}</Text>
+                <Text
+                    style={styles.body}
+                >{this.state.body}</Text>
             </View>
         );
     }

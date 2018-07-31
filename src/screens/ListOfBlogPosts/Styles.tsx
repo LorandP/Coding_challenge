@@ -32,6 +32,7 @@ export default class Styles extends React.Component<Props, State> {
             <CardItem
                 style={styles.cardItemContainer}
                 title={blogPost.getTitle()}
+                content={blogPost.getBody()}
                 onCardPressed={() => this.props.onCardPressed(blogPost)}
             />
         )
@@ -93,12 +94,13 @@ export default class Styles extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     cardItemContainer: {
-        borderRadius: 10,
+        borderRadius: 5,
         backgroundColor: WHITE,
-        height: 150,
-        width: null,
-        flex: 1,
-        margin: 10,
+        height: 110,
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 10,
+        marginBottom: 10,
         elevation: 3,
         shadowColor: GRAY,
         shadowOffset: {
