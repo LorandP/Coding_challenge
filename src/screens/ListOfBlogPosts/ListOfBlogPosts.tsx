@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { User } from '../../entity/User';
 import BlogPostService from '../../services/BlogPostService';
 import BlogPost from '../../entity/BlogPost';
 import Styles from './Styles';
-import { AppState } from '../../../node_modules/@types/react-native';
 
 export interface Props {
     navigation: any;
