@@ -37,7 +37,10 @@ export default class Styles extends React.Component<Props, State> {
         const userNotFountMessage = 'User has not been found. Please try again later';
         return (
             <ImageBackground
-            style={styles.container}
+            style={[
+                styles.container,
+                this.props.loading ? {justifyContent: 'center', alignItems: 'center'} : {}
+            ]}
             source={BACKGROUND_IMAGE}
             >
                 <Header transparent>
@@ -57,8 +60,7 @@ export default class Styles extends React.Component<Props, State> {
                     this.props.loading &&
                     <ActivityIndicator
                         size='large'
-                        color={GREEN}
-                        style={{ alignSelf: 'center' }}
+                        color={WHITE}
                     />
                 }
 
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: GREEN_LIGHT,
+        backgroundColor: WHITE,
         resizeMode: 'cover'
     },
     showPostsButton: {
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: WHITE,
-        fontSize: 18,
+        fontSize: 20,
         fontFamily: 'Lato-Regular'
     },
     titleText: {
