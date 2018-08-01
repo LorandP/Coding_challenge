@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         flexDirection: 'column',
-        padding: 20
+        padding: 20,
+        backgroundColor: WHITE
     },
     title: {
         fontSize: 25,

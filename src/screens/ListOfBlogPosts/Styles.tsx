@@ -41,7 +41,7 @@ export default class Styles extends React.Component<Props, State> {
     render() {
         return (
             <View
-                style={{ flex: 1 }}
+                style={{ flex: 1, backgroundColor: WHITE }}
             >
                 {
                     this.props.loading &&
