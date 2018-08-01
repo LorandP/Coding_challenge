@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor: GREEN_LIGHT,
-        resizeMode: 'repeat'
+        resizeMode: 'cover'
     },
     showPostsButton: {
         backgroundColor: GREEN_LIGHT,
