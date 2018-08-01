@@ -1,7 +1,10 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image } from 'react-native';
 import ButtonGeneric from '../../common/ButtonGeneric';
-import { GREEN_LIGHT, WHITE, GREEN } from '../../config/colors';
+import { GREEN_LIGHT, WHITE, GREEN, GRAY } from '../../config/colors';
+
+
+const PROFILE_PICTURE = require('../../../assets/profile_picture.png');
 
 export interface Props {
     name: string;
@@ -19,8 +22,10 @@ export default class Styles extends React.Component<Props, State> {
     }
 
     render() {
-        const greetingMessage = 'Hello ' + this.props.name + '. Welcome back!' + '\n' +
-            'Are you still living in ' + this.props.city + ', ' + this.props.street + ' ?';
+        const greetingMessage = 'Hello ';
+        const welcomeMessage = 'Welcome back!';
+        const questionMessage = 'Are you still living in ';
+
         const userNotFountMessage = 'User has not been found. Please try again later';
         return (
             <View style={styles.container}>
@@ -29,32 +34,75 @@ export default class Styles extends React.Component<Props, State> {
                     <ActivityIndicator
                         size='large'
                         color={GREEN}
+                        style={{ alignSelf: 'center' }}
                     />
+                }
+                {
+                    /*  !this.props.userNotFound &&
+                     !this.props.loading &&
+                     <View
+                         style={styles.imageContainer}
+                     >
+                         <Image
+                             source={PROFILE_PICTURE}
+                             style={styles.profilePicture}
+                         />
+                     </View> */
                 }
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <Text
-                        style={styles.titleText}
-                    >{greetingMessage}</Text>
-                }
-                {
-                    !this.props.userNotFound &&
-                    !this.props.loading &&
-                    <ButtonGeneric
-                        buttonStyle={styles.showPostsButton}
-                        textStyle={styles.text}
-                        buttonText={'Show Articles'}
-                        onButtonPressed={() => this.props.onShowPostsButtonPressed()}
-                    />
+                    <View
+                    style={styles.viewsContainer}
+                    >
+                        <View
+                            style={styles.imageContainer}
+                        >
+                            <Image
+                                source={PROFILE_PICTURE}
+                                style={styles.profilePicture}
+                            />
+                        </View>
+                        <View
+                            style={styles.textAndButtonContainer}
+                        >
+                            <Text
+                                style={styles.titleText}
+                            >{greetingMessage}</Text>
+                            <Text
+                                style={styles.userDataText}
+                            >{this.props.name}</Text>
+                            <Text
+                                style={styles.titleText}
+                            >{welcomeMessage}</Text>
+                            <Text
+                                style={styles.titleText}
+                            >{questionMessage}</Text>
+                            <Text
+                                style={styles.userDataText}
+                            >{this.props.city + ', ' + this.props.street + ' ?'}</Text>
+
+                            <ButtonGeneric
+                                buttonStyle={styles.showPostsButton}
+                                textStyle={styles.text}
+                                buttonText={'Show Articles'}
+                                onButtonPressed={() => this.props.onShowPostsButtonPressed()}
+                            />
+                        </View>
+                    </View>
+
 
                 }
+
                 {
                     this.props.userNotFound &&
                     !this.props.loading &&
-                    <Text
-                        style={styles.titleText}
-                    >{userNotFountMessage}</Text>
+                    <View>
+                        <Text
+                            style={styles.titleText}
+                        >{userNotFountMessage}</Text>
+                    </View>
+
                 }
             </View>
         );
@@ -65,14 +113,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'space-around',
         padding: 30,
         alignItems: 'center'
     },
     showPostsButton: {
         backgroundColor: GREEN_LIGHT,
         height: 50,
-        width: 150,
+        width: 200,
+        marginTop: 30,
         borderRadius: 40,
         justifyContent: 'center',
         alignItems: 'center'
@@ -83,9 +131,66 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato-Regular'
     },
     titleText: {
-        color: GREEN,
+        color: GREEN_LIGHT,
         fontSize: 20,
+        marginTop: 10,
         textAlign: 'center',
         fontFamily: 'Lato-Regular'
+    },
+    userDataText: {
+        color: GREEN,
+        fontSize: 22,
+        textAlign: 'center',
+        fontFamily: 'Lato-Bold'
+    },
+    textAndButtonContainer: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        padding: 10,
+        paddingTop: 70,
+        elevation: 5,
+        shadowColor: GRAY,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 5,
+        shadowRadius: 5,
+        backgroundColor: WHITE
+    },
+    profilePicture: {
+        width: 100,
+        height: 100,
+        borderRadius: 100 / 2
+    },
+    imageContainer: {
+        width: 110,
+        height: 110,
+        borderRadius: 110 / 2,
+        backgroundColor: WHITE,
+        elevation: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 20,
+        shadowColor: GRAY,
+        shadowOpacity: 5,
+        shadowRadius: 5,
+        position: 'absolute',
+        top: 0,
+        zIndex: 2,
+        alignSelf: 'center'
+    },
+    
+    viewsContainer: {
+        position: 'absolute',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        height: 370,
+        padding: 10,
+        top: 100,
+        bottom: 50
     }
 });
