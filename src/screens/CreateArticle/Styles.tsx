@@ -3,7 +3,7 @@ import * as React from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import ButtonGeneric from '../../common/ButtonGeneric';
 import ErrorText from '../../common/ErrorText';
-import { GREEN_LIGHT, WHITE } from '../../config/colors';
+import { GREEN_LIGHT, WHITE, BLACK } from '../../config/colors';
 
 
 export interface Props {
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
     },
     lable: {
         fontSize: 30,
-        fontFamily: 'Lato-Bold'
+        fontFamily: 'Lato-Bold',
+        color: BLACK
     },
     titleInput: {
         marginTop: 10,
