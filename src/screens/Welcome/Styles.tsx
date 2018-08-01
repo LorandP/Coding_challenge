@@ -37,18 +37,7 @@ export default class Styles extends React.Component<Props, State> {
                         style={{ alignSelf: 'center' }}
                     />
                 }
-                {
-                    /*  !this.props.userNotFound &&
-                     !this.props.loading &&
-                     <View
-                         style={styles.imageContainer}
-                     >
-                         <Image
-                             source={PROFILE_PICTURE}
-                             style={styles.profilePicture}
-                         />
-                     </View> */
-                }
+        
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
@@ -90,8 +79,16 @@ export default class Styles extends React.Component<Props, State> {
                             />
                         </View>
                     </View>
-
-
+                }
+                {
+                    !this.props.userNotFound &&
+                    !this.props.loading &&
+                    <View style={{backgroundColor: GREEN_LIGHT, flex: 1}}/>
+                }
+                {
+                    !this.props.userNotFound &&
+                    !this.props.loading &&
+                    <View style={{backgroundColor: WHITE, flex: 0.5}}/>
                 }
 
                 {
@@ -112,9 +109,7 @@ export default class Styles extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        padding: 30,
-        alignItems: 'center'
+        flexDirection: 'column'
     },
     showPostsButton: {
         backgroundColor: GREEN_LIGHT,
@@ -190,7 +185,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         height: 370,
         padding: 10,
-        top: 100,
-        bottom: 50
+        bottom: 50,
+        zIndex: 5,
+        alignSelf: 'center'
     }
 });

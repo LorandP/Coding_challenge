@@ -3,7 +3,7 @@ import Welcome from '../screens/Welcome/Welcome';
 import ListOfBlogPosts from '../screens/ListOfBlogPosts/ListOfBlogPosts';
 import Article from '../screens/Article/Article';
 import CreateArticle from '../screens/CreateArticle/CreateArticle';
-import { GRAY, GREEN, WHITE } from './colors';
+import { GRAY, WHITE, TRANSPARENT } from './colors';
 
 const headerStyle = {
     shadowColor: GRAY,
@@ -13,7 +13,7 @@ const headerStyle = {
     },
     shadowRadius: 2,
     shadowOpacity: 0.5,
-    borderBottomColor: 'transparent'
+    borderBottomColor: TRANSPARENT
 };
 
 
