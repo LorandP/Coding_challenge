@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { GREEN_LIGHT } from '../../config/colors';
+import { GREEN_LIGHT, BLACK } from '../../config/colors';
 
+const CARD_IMAGE = require('../../../assets/card_image.png');
 export interface Props {
     style: any;
     title: string;
+    content: string,
     onCardPressed: Function;
 }
 export interface State { }
@@ -22,17 +24,23 @@ export default class CardItem extends React.Component<Props, State> {
                 onPress={() => this.props.onCardPressed()}
             >
                 <View
-                style={styles.topView}
+                    style={styles.imageAndTextContainer}
                 >
-                
-                </View>
-
-                <View
-                    style={styles.bottomView}
-                >
-                    <Text
-                        style={styles.title}
-                    >{this.props.title}</Text>
+                    <Image
+                        source={CARD_IMAGE}
+                        style={styles.image}
+                    />
+                    <View
+                    style={styles.textContainer}
+                    >
+                        <Text
+                            style={styles.title}
+                        >{this.props.title}</Text>
+                        <Text
+                            style={styles.content}
+                            numberOfLines={3}
+                        >{this.props.content}</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         );
@@ -41,22 +49,39 @@ export default class CardItem extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     topView: {
-        height: 200,
-        flex: 0.8,
-        width: null,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         backgroundColor: GREEN_LIGHT
     },
-    bottomView: {
+    imageAndTextContainer: {
         flex: 1,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
-        padding: 20
+        padding: 5,
+        flexDirection: 'row'
+    },
+    textContainer: {
+        flexDirection: 'column',
+        flex: 1,
+        paddingLeft: 10,
+        paddingRight: 10
     },
     title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center'
+        fontSize: 14,
+        textAlign: 'left',
+        fontFamily: 'Lato-Bold',
+        color: BLACK
+    },
+    content: {
+        fontSize: 12,
+        textAlign: 'left',
+        fontFamily: 'Lato-Light',
+        marginTop: 5
+    },
+    image: {
+        height: 100,
+        width: 100,
+        resizeMode: 'stretch',
+        borderRadius: 10
     }
 });

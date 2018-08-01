@@ -78,15 +78,17 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: WHITE
     },
     lable: {
-        fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: 'Lato-Bold'
     },
     titleInput: {
         marginTop: 10,
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Lato-Regular'
     },
     contentInput: {
         marginTop: 10,
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: WHITE,
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Lato-Regular'
     }
 });

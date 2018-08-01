@@ -6,3 +6,4 @@ export const CYAN = '#01866C';
 export const TRANSPARENT = 'transparent';
 export const WHITE = '#FFFFFF';
 export const ERROR = '#d32f2f';
+export const BLACK = 'black';

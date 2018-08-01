@@ -3,7 +3,7 @@ import Welcome from '../screens/Welcome/Welcome';
 import ListOfBlogPosts from '../screens/ListOfBlogPosts/ListOfBlogPosts';
 import Article from '../screens/Article/Article';
 import CreateArticle from '../screens/CreateArticle/CreateArticle';
-import { GRAY, GREEN, WHITE } from './colors';
+import { GRAY, TRANSPARENT } from './colors';
 
 const headerStyle = {
     shadowColor: GRAY,
@@ -13,28 +13,22 @@ const headerStyle = {
     },
     shadowRadius: 2,
     shadowOpacity: 0.5,
-    borderBottomColor: 'transparent'
+    borderBottomColor: TRANSPARENT
 };
-
-
 
 const homeStackNavigator = createStackNavigator({
     Welcome: {
-        screen: Welcome,
-        navigationOptions: () => ({
-            title: 'Welcome',
-            headerTintColor: GREEN,
-            headerBackTitle: null,
-            headerStyle
-        })
+        screen: Welcome
     },
     ListOfBlogPosts: {
         screen: ListOfBlogPosts,
         navigationOptions: () => ({
             title: 'Articles',
             headerBackTitle: null,
-            headerTintColor: GREEN,
-            headerStyle
+            headerStyle,
+            headerTitleStyle: {
+                fontFamily: 'Lato-Regular'
+            }
         })
     },
     Article: {
@@ -45,18 +39,14 @@ const homeStackNavigator = createStackNavigator({
         navigationOptions: () => ({
             title: 'Create Article',
             headerBackTitle: null,
-            headerTintColor: GREEN,
-            headerStyle
+            headerStyle,
+            headerTitleStyle: {
+                fontFamily: 'Lato-Regular'
+            }
         })
     }
 },
-    {
-        headerMode: 'float',
-        cardStyle: {
-            backgroundColor: WHITE
-        },
-        headerStyle
-    }
+    { headerMode: 'float' }
 )
 
 export { homeStackNavigator as HomeStackNavigator }
