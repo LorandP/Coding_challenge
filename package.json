@@ -9,6 +9,7 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android && npm run tsc"
   },
   "dependencies": {
+    "native-base": "2.7.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-navigation": "2.9.3"
@@ -27,6 +28,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": ["./assets/fonts"]
- }
+    "assets": [
+      "./assets/fonts"
+    ]
+  }
 }

@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image, StatusBar, Platform } from 'react-native';
+import { Header, Content, Container, Body } from 'native-base';
 import ButtonGeneric from '../../common/ButtonGeneric';
-import { GREEN_LIGHT, WHITE, GREEN, GRAY } from '../../config/colors';
+import { GREEN_LIGHT, WHITE, GREEN, GRAY, TRANSPARENT, BLACK } from '../../config/colors';
 
 
 const PROFILE_PICTURE = require('../../../assets/profile_picture.png');
@@ -21,6 +22,12 @@ export default class Styles extends React.Component<Props, State> {
         super(props);
     }
 
+    componentWillMount() {
+        if (Platform.OS === 'android') {
+            StatusBar.setTranslucent(true);
+        }
+    }
+
     render() {
         const greetingMessage = 'Hello ';
         const welcomeMessage = 'Welcome back!';
@@ -29,6 +36,19 @@ export default class Styles extends React.Component<Props, State> {
         const userNotFountMessage = 'User has not been found. Please try again later';
         return (
             <View style={styles.container}>
+                <Header transparent>
+                    <Body>
+                        <Text
+                        style={styles.headerText}
+                        >
+                            {'Welcome'}
+                        </Text>
+                    </Body>
+                </Header>
+                <StatusBar
+                    backgroundColor={TRANSPARENT}
+                    barStyle='light-content'
+                />
                 {
                     this.props.loading &&
                     <ActivityIndicator
@@ -37,12 +57,12 @@ export default class Styles extends React.Component<Props, State> {
                         style={{ alignSelf: 'center' }}
                     />
                 }
-        
+
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
                     <View
-                    style={styles.viewsContainer}
+                        style={styles.viewsContainer}
                     >
                         <View
                             style={styles.imageContainer}
@@ -83,12 +103,12 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <View style={{backgroundColor: GREEN_LIGHT, flex: 1}}/>
+                    <View style={{ backgroundColor: TRANSPARENT, flex: 1 }} />
                 }
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <View style={{backgroundColor: WHITE, flex: 0.5}}/>
+                    <View style={{ backgroundColor: WHITE, flex: 0.5 }} />
                 }
 
                 {
@@ -109,7 +129,8 @@ export default class Styles extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: GREEN_LIGHT
     },
     showPostsButton: {
         backgroundColor: GREEN_LIGHT,
@@ -177,7 +198,7 @@ const styles = StyleSheet.create({
         zIndex: 2,
         alignSelf: 'center'
     },
-    
+
     viewsContainer: {
         position: 'absolute',
         flexDirection: 'column',
@@ -188,5 +209,10 @@ const styles = StyleSheet.create({
         bottom: 50,
         zIndex: 5,
         alignSelf: 'center'
+    },
+    headerText: {
+        fontFamily: 'Lato-Bold',
+        fontSize: 20,
+        color: BLACK
     }
 });

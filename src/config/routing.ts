@@ -3,7 +3,7 @@ import Welcome from '../screens/Welcome/Welcome';
 import ListOfBlogPosts from '../screens/ListOfBlogPosts/ListOfBlogPosts';
 import Article from '../screens/Article/Article';
 import CreateArticle from '../screens/CreateArticle/CreateArticle';
-import { GRAY, WHITE, TRANSPARENT } from './colors';
+import { GRAY, TRANSPARENT } from './colors';
 
 const headerStyle = {
     shadowColor: GRAY,
@@ -16,19 +16,9 @@ const headerStyle = {
     borderBottomColor: TRANSPARENT
 };
 
-
-
 const homeStackNavigator = createStackNavigator({
     Welcome: {
-        screen: Welcome,
-        navigationOptions: () => ({
-            title: 'Welcome',
-            headerBackTitle: null,
-            headerStyle,
-            headerTitleStyle: {
-                fontFamily: 'Lato-Regular'
-            }
-        })
+        screen: Welcome
     },
     ListOfBlogPosts: {
         screen: ListOfBlogPosts,
@@ -56,13 +46,7 @@ const homeStackNavigator = createStackNavigator({
         })
     }
 },
-    {
-        headerMode: 'float',
-        cardStyle: {
-            backgroundColor: WHITE
-        },
-        headerStyle
-    }
+    { headerMode: 'float' }
 )
 
 export { homeStackNavigator as HomeStackNavigator }
