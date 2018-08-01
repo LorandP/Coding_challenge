@@ -36,7 +36,10 @@ export default class Styles extends React.Component<Props, State> {
 
         const userNotFountMessage = 'User has not been found. Please try again later';
         return (
-            <View style={styles.container}>
+            <ImageBackground
+            style={styles.container}
+            source={BACKGROUND_IMAGE}
+            >
                 <Header transparent>
                     <Body>
                         <Text
@@ -104,15 +107,12 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <ImageBackground 
-                    style={styles.backgroundImage} 
-                    source={BACKGROUND_IMAGE}
-                    />
+                    <View style={styles.topContainer} />
                 }
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <View style={{ backgroundColor: WHITE, flex: 0.5 }} />
+                    <View style={styles.bottomContainer} />
                 }
 
                 {
@@ -125,7 +125,7 @@ export default class Styles extends React.Component<Props, State> {
                     </View>
 
                 }
-            </View>
+            </ImageBackground>
         );
     }
 }
@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: GREEN_LIGHT
+        backgroundColor: GREEN_LIGHT,
+        resizeMode: 'repeat'
     },
     showPostsButton: {
         backgroundColor: GREEN_LIGHT,
@@ -217,13 +218,14 @@ const styles = StyleSheet.create({
     headerText: {
         fontFamily: 'Lato-Bold',
         fontSize: 20,
-        color: BLACK
+        color: WHITE
     },
-    backgroundImage: {
+    topContainer: {
         backgroundColor: TRANSPARENT,
-        flex: 1,
-        height: null,
-        width: null,
-        resizeMode: 'cover'
+        flex: 1
+    },
+    bottomContainer: {
+        backgroundColor: WHITE,
+        flex: 0.5
     }
 });
