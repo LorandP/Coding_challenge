@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, ImageBackground } from 'react-native';
 import { WHITE, BLACK } from '../../config/colors';
 
 const ARTICLE_IMAGE = require('../../../assets/article_image_wide.png');
@@ -25,9 +25,9 @@ export default class Styles extends React.Component<Props, State> {
                     style={styles.title}
                 >{this.props.title}</Text>
                 <View
-                    style={{ backgroundColor: WHITE, width: 350, alignSelf: 'center' }}
+                    style={styles.imageContainer}
                 >
-                    <Image
+                    <ImageBackground
                         source={ARTICLE_IMAGE}
                         style={styles.image}
                     />
@@ -64,6 +64,14 @@ const styles = StyleSheet.create({
     },
     image: {
         marginTop: 30,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        height: null,
+        width: null,
+        flex: 1
+    },
+    imageContainer: {
+        width: 350,
+        height: 200,
+        alignSelf: 'center'
     }
 });

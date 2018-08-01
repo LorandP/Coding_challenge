@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, ActivityIndicator, Image, StatusBar, Platform } from 'react-native';
-import { Header, Content, Container, Body } from 'native-base';
+import { StyleSheet, Text, View, ActivityIndicator, Image, StatusBar, Platform, ImageBackground } from 'react-native';
+import { Header, Body } from 'native-base';
 import ButtonGeneric from '../../common/ButtonGeneric';
 import { GREEN_LIGHT, WHITE, GREEN, GRAY, TRANSPARENT, BLACK } from '../../config/colors';
 
 
 const PROFILE_PICTURE = require('../../../assets/profile_picture.png');
+const BACKGROUND_IMAGE = require('../../../assets/profile_background_image.png');
 
 export interface Props {
     name: string;
@@ -103,7 +104,10 @@ export default class Styles extends React.Component<Props, State> {
                 {
                     !this.props.userNotFound &&
                     !this.props.loading &&
-                    <View style={{ backgroundColor: TRANSPARENT, flex: 1 }} />
+                    <ImageBackground 
+                    style={styles.backgroundImage} 
+                    source={BACKGROUND_IMAGE}
+                    />
                 }
                 {
                     !this.props.userNotFound &&
@@ -214,5 +218,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato-Bold',
         fontSize: 20,
         color: BLACK
+    },
+    backgroundImage: {
+        backgroundColor: TRANSPARENT,
+        flex: 1,
+        height: null,
+        width: null,
+        resizeMode: 'cover'
     }
 });
