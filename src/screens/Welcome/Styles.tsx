@@ -23,12 +23,6 @@ export default class Styles extends React.Component<Props, State> {
         super(props);
     }
 
-    componentWillMount() {
-        if (Platform.OS === 'android') {
-            StatusBar.setTranslucent(true);
-        }
-    }
-
     render() {
         const greetingMessage = 'Hello ';
         const welcomeMessage = 'Welcome back!';
