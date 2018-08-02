@@ -9,6 +9,14 @@ export interface Props {
 }
 export interface State {}
 
+
+/**
+ * A button that can be reused in the application
+ *
+ * @export
+ * @class ButtonGeneric
+ * @extends {React.Component<Props, State>}
+ */
 export default class ButtonGeneric extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);

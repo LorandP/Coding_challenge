@@ -11,6 +11,14 @@ export interface Props {
 }
 export interface State { }
 
+
+/**
+ * A single Card item shown in the list of articles
+ *
+ * @export
+ * @class CardItem
+ * @extends {React.Component<Props, State>}
+ */
 export default class CardItem extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);

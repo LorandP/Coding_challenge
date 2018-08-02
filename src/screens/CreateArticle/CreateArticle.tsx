@@ -14,6 +14,14 @@ export interface State {
     errorMessage: string;
 }
 
+
+/**
+ * Screen that hadnles the creation of an article
+ *
+ * @export
+ * @class CreateArticle
+ * @extends {React.Component<Props, State>}
+ */
 export default class CreateArticle extends React.Component<Props, State> {
     private userId: number;
     private blogPost: BlogPost;

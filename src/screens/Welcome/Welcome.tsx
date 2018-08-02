@@ -11,6 +11,14 @@ export interface State {
     loading: boolean;
 }
 
+
+/**
+ * Screen for the Welcome page
+ *
+ * @export
+ * @class Welcome
+ * @extends {React.Component<Props, State>}
+ */
 export default class Welcome extends React.Component<Props, State> {
     private user: User;
     private userService: UserService;

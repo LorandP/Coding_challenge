@@ -17,6 +17,14 @@ export interface State {
 
 }
 
+
+/**
+ * Styling for the Create Article screen
+ *
+ * @export
+ * @class Styles
+ * @extends {React.Component<Props, State>}
+ */
 export default class Styles extends React.Component<Props, State> {
     render() {
         return (

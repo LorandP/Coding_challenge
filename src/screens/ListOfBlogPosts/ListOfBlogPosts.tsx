@@ -12,6 +12,14 @@ export interface State {
     errorMesage: string;
 }
 
+
+/**
+ * Screen for the List of articles
+ *
+ * @export
+ * @class ListOfBlogPosts
+ * @extends {React.Component<Props, State>}
+ */
 export default class ListOfBlogPosts extends React.Component<Props, State> {
     private userID: number;
     private blogPostService: BlogPostService;
