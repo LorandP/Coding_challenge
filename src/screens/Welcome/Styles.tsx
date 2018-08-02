@@ -33,13 +33,12 @@ export default class Styles extends React.Component<Props, State> {
         const greetingMessage = 'Hello ';
         const welcomeMessage = 'Welcome back!';
         const questionMessage = 'Are you still living in ';
-
-        const userNotFountMessage = 'User has not been found. Please try again later';
+        const userNotFountMessage = 'Could not connect to the server.\nPlease try again later';
         return (
             <ImageBackground
             style={[
                 styles.container,
-                this.props.loading ? {justifyContent: 'center', alignItems: 'center'} : {}
+                this.props.loading || this.props.userNotFound ? {justifyContent: 'center', alignItems: 'center'} : {}
             ]}
             source={BACKGROUND_IMAGE}
             >
@@ -122,7 +121,7 @@ export default class Styles extends React.Component<Props, State> {
                     !this.props.loading &&
                     <View>
                         <Text
-                            style={styles.titleText}
+                            style={styles.errorText}
                         >{userNotFountMessage}</Text>
                     </View>
 
@@ -156,6 +155,13 @@ const styles = StyleSheet.create({
     titleText: {
         color: GREEN_LIGHT,
         fontSize: 20,
+        marginTop: 10,
+        textAlign: 'center',
+        fontFamily: 'Lato-Regular'
+    },
+    errorText: {
+        color: WHITE,
+        fontSize: 30,
         marginTop: 10,
         textAlign: 'center',
         fontFamily: 'Lato-Regular'
