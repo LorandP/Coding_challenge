@@ -16,8 +16,6 @@ export class App extends React.Component<Props, State> {
       splashScreenShow: false
     }
   }
-
-
   /**
    * Changes the state of splashcreen variable
    *

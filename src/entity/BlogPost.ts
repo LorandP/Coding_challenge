@@ -1,3 +1,10 @@
+
+/**
+ * A model that represents a blog post
+ *
+ * @export
+ * @class BlogPost
+ */
 export default class BlogPost {
     private userId: number;
     private id: number;

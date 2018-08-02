@@ -8,6 +8,14 @@ export interface Props {
 }
 export interface State {}
 
+
+/**
+ * A class that represents a Splash screen
+ *
+ * @export
+ * @class Splashscreen
+ * @extends {React.Component<Props, State>}
+ */
 export default class Splashscreen extends React.Component<Props, State> {
     private timer: any;
 

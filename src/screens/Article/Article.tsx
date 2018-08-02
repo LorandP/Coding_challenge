@@ -10,6 +10,14 @@ export interface State {
     body: string;
 }
 
+
+/**
+ * Screen that shows an article
+ *
+ * @export
+ * @class Article
+ * @extends {React.Component<Props, State>}
+ */
 export default class Article extends React.Component<Props, State> {
     private blogPost: BlogPost;
     /**

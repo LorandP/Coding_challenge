@@ -18,15 +18,17 @@ export interface Props {
 }
 export interface State { }
 
+
+/**
+ * Styling for the Welcome page
+ *
+ * @export
+ * @class Styles
+ * @extends {React.Component<Props, State>}
+ */
 export default class Styles extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-    }
-
-    componentWillMount() {
-        if (Platform.OS === 'android') {
-            StatusBar.setTranslucent(true);
-        }
     }
 
     render() {

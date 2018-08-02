@@ -7,6 +7,14 @@ export interface Props {
 }
 export interface State { }
 
+
+/**
+ * A text that can be reused specifically for the error handling
+ *
+ * @export
+ * @class ErrorText
+ * @extends {React.Component<Props, State>}
+ */
 export default class ErrorText extends React.Component<Props, State> {
     render() {
         return (
