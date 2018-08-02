@@ -6,11 +6,15 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest --coverage",
     "tsc": "tsc --watch",
-    "android": "node node_modules/react-native/local-cli/cli.js run-android && npm run tsc"
+    "android": "node node_modules/react-native/local-cli/cli.js run-android && npm run tsc",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Coding_challenge/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build:android": "react-native bundle --dev false --platform android --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res && cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
+    "native-base": "2.7.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-splash-screen": "3.1.1",
     "react-navigation": "2.9.3"
   },
   "devDependencies": {
@@ -25,5 +29,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }

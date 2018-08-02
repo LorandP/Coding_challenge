@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Header, Content } from 'native-base';
 import { User } from '../../entity/User';
 import Styles from './Styles';
 import UserService from '../../services/UserService';
@@ -10,9 +11,20 @@ export interface State {
     loading: boolean;
 }
 
+
+/**
+ * Screen for the Welcome page
+ *
+ * @export
+ * @class Welcome
+ * @extends {React.Component<Props, State>}
+ */
 export default class Welcome extends React.Component<Props, State> {
     private user: User;
     private userService: UserService;
+    static navigationOptions = {
+        header: null
+    }
     constructor(props: Props) {
         super(props);
         this.user = new User();

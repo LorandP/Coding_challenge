@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { User } from '../../entity/User';
-import { BlogPostService } from '../../services/BlogPostService';
-import { BlogPost } from '../../entity/BlogPost';
+import BlogPostService from '../../services/BlogPostService';
+import BlogPost from '../../entity/BlogPost';
 import Styles from './Styles';
 
 export interface Props {
@@ -9,32 +8,59 @@ export interface Props {
 }
 export interface State {
     loading: boolean;
+    listOfBlogPosts: Array<BlogPost>;
+    errorMesage: string;
 }
 
+
+/**
+ * Screen for the List of articles
+ *
+ * @export
+ * @class ListOfBlogPosts
+ * @extends {React.Component<Props, State>}
+ */
 export default class ListOfBlogPosts extends React.Component<Props, State> {
-    private user: User;
+    private userID: number;
     private blogPostService: BlogPostService;
-    private listOfBlogPosts: Array<BlogPost>;
+    private didFocusListener: any;
 
     constructor(props: Props) {
         super(props);
-        this.user = new User();
+        this.userID = 0;
         this.blogPostService = new BlogPostService();
-        this.listOfBlogPosts = new Array<BlogPost>();
         this.state = {
-            loading: true
+            loading: true,
+            listOfBlogPosts: [],
+            errorMesage: ''
         }
     }
 
     async componentDidMount() {
-        let userID = 0;
-        
         try {
-            userID = this.props.navigation.state.params.userID;
-            this.listOfBlogPosts = await this.blogPostService.retrieveListOfPosts(userID);
-            this.setState({...this.state, loading: false})
+            this.userID = this.props.navigation.state.params.userID;
+            let listOfBlogPosts = await this.blogPostService.retrieveListOfPosts(this.userID);
+            this.setState({
+                ...this.state,
+                listOfBlogPosts
+            });
+            this.didFocusListener = this.props.navigation.addListener('didFocus', () => {
+                this.setState({
+                    ...this.state,
+                    loading: false
+                });
+            });
         } catch (error) {
-            console.log('List of blog post -- ', error);
+            this.setState({
+                ...this.state,
+                errorMesage: 'Could not retrieve the list of blog posts. Please try again later'
+            });
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.didFocusListener) {
+            this.didFocusListener.remove();
         }
     }
 
@@ -46,15 +72,35 @@ export default class ListOfBlogPosts extends React.Component<Props, State> {
      * @memberof ListOfBlogPosts
      */
     private navigateToBlogPost(blogPost: BlogPost) {
-        this.props.navigation.navigate('Article', {blogPost})
+        this.props.navigation.navigate('Article', { blogPost })
+    }
+
+
+    /**
+     * Navigates to the create article page
+     *
+     * @private
+     * @memberof ListOfBlogPosts
+     */
+    private navigateToCreateArticle() {
+        this.props.navigation.navigate('CreateArticle', {
+            userId: this.userID,
+            listOfArticles: this.state.listOfBlogPosts
+        });
+        this.setState({
+            ...this.state,
+            loading: true
+        });
     }
 
     render() {
         return (
             <Styles
-            listOfBlogPosts={this.listOfBlogPosts}
-            loading={this.state.loading}
-            onCardPressed={(blogPost) => this.navigateToBlogPost(blogPost)}
+                listOfBlogPosts={this.state.listOfBlogPosts}
+                loading={this.state.loading}
+                onCardPressed={(blogPost) => this.navigateToBlogPost(blogPost)}
+                onShowCreatePostButtonPressed={() => this.navigateToCreateArticle()}
+                errorMessage={this.state.errorMesage}
             />
         );
     }

@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { BlogPost } from '../../entity/BlogPost';
-import { GREEN } from '../../config/colors';
+import BlogPost from '../../entity/BlogPost';
+import Styles from './Styles';
 
 export interface Props {
     navigation: any;
@@ -11,6 +10,14 @@ export interface State {
     body: string;
 }
 
+
+/**
+ * Screen that shows an article
+ *
+ * @export
+ * @class Article
+ * @extends {React.Component<Props, State>}
+ */
 export default class Article extends React.Component<Props, State> {
     private blogPost: BlogPost;
     /**
@@ -20,19 +27,16 @@ export default class Article extends React.Component<Props, State> {
      * @static
      * @memberof BlogPost
      */
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             title: 'Blog ' + navigation.state.params.blogPost.getId(),
             headerBackTitle: null,
-            headerTintColor: GREEN
+            headerTitleStyle: {
+                fontFamily: 'Lato-Regular'
+            }
         }
     }
-    
-    /**
-     *Creates an instance of Article.
-     * @param {Props} props
-     * @memberof Article
-     */
+
     constructor(props: Props) {
         super(props);
         this.blogPost = new BlogPost();
@@ -53,37 +57,10 @@ export default class Article extends React.Component<Props, State> {
 
     render() {
         return (
-            <View style={styles.container}>
-            <Text
-            style={styles.title}
-            >{this.state.title}</Text>
-            <Text
-            style={styles.body}
-            >{this.state.body}</Text>
-            </View>
+            <Styles
+            title={this.state.title}
+            body={this.state.body}
+            />
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        padding: 20
-    },
-    title: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        alignSelf: 'center',
-        marginTop: 20
-    },
-    body: {
-        fontSize: 17,
-        textAlign: 'justify',
-        letterSpacing: 1,
-        marginTop: 50
-    }
-});
