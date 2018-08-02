@@ -1,5 +1,5 @@
 # WriteOn
-A demo application built with react-native and typescript where you can access a list of articles and create an article.
+An application built with react-native and typescript where you can access a list of articles and create an article.
 
 ## Deployment
 The project is merged in the master branch.
