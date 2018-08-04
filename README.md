@@ -1,6 +1,6 @@
 # WriteOn
 An application built with react-native and typescript where you can access a list of articles and create an article.
-The application retrieves its data from a dummi Rest Api and it was created only for demonstartin purposes. 
+The application retrieves its data from a dummy Rest Api and it was created only for demonstartin purposes. 
 
 [![Screenshot_20180804-164513.png](https://s33.postimg.cc/f4dzv95un/Screenshot_20180804-164513.png)](https://postimg.cc/image/m7lvavba3/)
 [![Screenshot_20180804-164522.png](https://s33.postimg.cc/572z23qi7/Screenshot_20180804-164522.png)](https://postimg.cc/image/5jud8a8rv/)
