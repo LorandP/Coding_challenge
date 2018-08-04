@@ -24,9 +24,7 @@ export default class Splashscreen extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        console.log('Splash screen');
         this.timer = setTimeout(async() => {
-            console.log('In ntimer');
             SplashScreen.hide();
             this.props.onSplahScreenLoadFinish();
         }, 1000);
