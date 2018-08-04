@@ -43,8 +43,7 @@ export default class Styles extends React.Component<Props, State> {
 
                 <Text
                     style={styles.body}
-                >{this.props.body + this.props.body + this.props.body + '\n\n' + 
-                this.props.body + this.props.body + this.props.body}</Text>
+                >{this.props.body}</Text>
             </ScrollView>
         );
     }
