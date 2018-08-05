@@ -1,4 +1,4 @@
-# WriteOn
+# Write On
 An application built with react-native and typescript where you can access a list of articles and create an article.
 The application retrieves its data from a dummy Rest Api and it was created only for demonstartin purposes. 
 
