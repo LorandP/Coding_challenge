@@ -1,4 +1,4 @@
-package com.coding_challenge;
+package com.writeon;
 
 import android.app.Application;
 
